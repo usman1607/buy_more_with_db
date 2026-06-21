@@ -6,7 +6,7 @@ namespace BuyMore.Managers.Interfaces
 {
     public interface IPaymentManager
     {
-        Payment CreatePayment(Order order, double amount, PaymentMethod method);
+        Payment CreatePayment(Order order, decimal amount, PaymentMethod method);
         Payment? GetPaymentByReference(string reference);
         IEnumerable<Payment> GetPaymentsByUser(int userId);
         IEnumerable<Payment> GetAllPayments();

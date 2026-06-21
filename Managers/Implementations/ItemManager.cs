@@ -22,8 +22,8 @@ namespace BuyMore.Managers.Implementations
         {
             var name = ReadRequiredString("Enter item name: ");
             var description = ReadOptionalString("Enter item description: ");
-            var costPrice = ReadDouble("Enter cost price: ", minValue: 0);
-            var sellingPrice = ReadDouble("Enter selling price: ", minValue: costPrice);
+            var costPrice = ReadDecimal("Enter cost price: ", minValue: 0);
+            var sellingPrice = ReadDecimal("Enter selling price: ", minValue: costPrice);
             var quantity = ReadInt("Enter quantity: ", minValue: 0);
             var category = ReadRequiredString("Enter category: ");
 
@@ -46,8 +46,8 @@ namespace BuyMore.Managers.Implementations
 
             var name = ReadRequiredString("Enter item name: ");
             var description = ReadOptionalString("Enter item description: ");
-            var costPrice = ReadDouble("Enter cost price: ", minValue: 0);
-            var sellingPrice = ReadDouble("Enter selling price: ", minValue: costPrice);
+            var costPrice = ReadDecimal("Enter cost price: ", minValue: 0);
+            var sellingPrice = ReadDecimal("Enter selling price: ", minValue: costPrice);
             var quantity = ReadInt("Enter quantity: ", minValue: 0);
             var category = ReadRequiredString("Enter category: ");
 
@@ -124,7 +124,7 @@ namespace BuyMore.Managers.Implementations
             return item;
         }
 
-        public void Search(string? category = null, string? searchKey = null, double minPriceRange = 0, double maxPriceRange = 0)
+        public void Search(string? category = null, string? searchKey = null, decimal minPriceRange = 0, decimal maxPriceRange = 0)
         {
             var items = _itemRepository.GetAllItems();
             if (items.Count == 0)
@@ -199,14 +199,14 @@ namespace BuyMore.Managers.Implementations
             return Console.ReadLine() ?? string.Empty;
         }
 
-        private static double ReadDouble(string prompt, double minValue = double.MinValue)
+        private static decimal ReadDecimal(string prompt, decimal minValue = decimal.MinValue)
         {
-            double value;
+            decimal value;
             Console.Write(prompt);
             var input = Console.ReadLine();
-            while (!double.TryParse(input, out value) || value < minValue)
+            while (!decimal.TryParse(input, out value) || value < minValue)
             {
-                Console.WriteLine(minValue == double.MinValue
+                Console.WriteLine(minValue == decimal.MinValue
                     ? "Please enter a valid number."
                     : $"Please enter a number greater than or equal to {minValue}.");
                 Console.Write(prompt);

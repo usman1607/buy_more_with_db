@@ -97,8 +97,8 @@ namespace BuyMore.Menus
             var category = Console.ReadLine();
             Console.Write("Enter search keyword (press Enter to skip): ");
             var search = Console.ReadLine();
-            var minPrice = ReadDouble("Enter min price (0 for none): ");
-            var maxPrice = ReadDouble("Enter max price (0 for none): ");
+            var minPrice = ReadDecimal("Enter min price (0 for none): ");
+            var maxPrice = ReadDecimal("Enter max price (0 for none): ");
             _itemManager.Search(category, search, minPrice, maxPrice);
         }
 
@@ -143,12 +143,12 @@ namespace BuyMore.Menus
             return value;
         }
 
-        private static double ReadDouble(string prompt)
+        private static decimal ReadDecimal(string prompt)
         {
             Console.Write(prompt);
             var input = Console.ReadLine();
-            double value;
-            while (!double.TryParse(input, out value) || value < 0)
+            decimal value;
+            while (!decimal.TryParse(input, out value) || value < 0)
             {
                 Console.Write("Please enter a valid amount: ");
                 input = Console.ReadLine();

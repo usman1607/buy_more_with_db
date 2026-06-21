@@ -151,7 +151,7 @@ namespace BuyMore.Managers.Implementations
             }
         }
 
-        public void UpdateUserWallet(int id, double newBalance)
+        public void UpdateUserWallet(int id, decimal newBalance)
         {
             var user = _userRepository.GetUserById(id);
             if(user == null)

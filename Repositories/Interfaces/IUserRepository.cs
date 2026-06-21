@@ -15,6 +15,6 @@ namespace BuyMore.Repositories.Interfaces
         List<User> GetAllUsers();
         bool UpdateUser(int id,User user);
         bool DeleteUser(int id);   
-        bool UpdateWalletBalance(int id, double newBalance);
+        bool UpdateWalletBalance(int id, decimal newBalance);
     }
 }

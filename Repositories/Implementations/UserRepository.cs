@@ -157,7 +157,7 @@ namespace BuyMore.Repositories.Implementations
             return rowsAffected > 0;
         }
 
-        public bool UpdateWalletBalance(int id, double newBalance)
+        public bool UpdateWalletBalance(int id, decimal newBalance)
         {
             using var connection = Database.GetConnection();
             var sql = "UPDATE users SET wallet_balance = @walletBalance WHERE id = @id";

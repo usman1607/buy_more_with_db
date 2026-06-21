@@ -128,7 +128,7 @@ namespace BuyMore.Managers.Implementations
                 return;
             }
 
-            double total = 0;
+            decimal total = 0;
             Console.WriteLine($"Cart #{cart.Id} for {cart.UserEmail}");
             foreach (var entry in cart.Items)
             {

@@ -2,20 +2,20 @@ using BuyMore.Enums;
 using BuyMore.Helpers;
 using BuyMore.Managers.Interfaces;
 using BuyMore.Models;
+using BuyMore.Repositories;
+using BuyMore.Repositories.Interfaces;
 
 namespace BuyMore.Managers.Implementations
 {
     public class PaymentManager: IPaymentManager
     {
-        private static int _nextId = 1;
-        private static List<Payment> _payments = new List<Payment>();
-
+        private readonly IPaymentRepository _paymentRepository;
         public PaymentManager()
         {
-            _payments = FileUtil.ReadFromFile<Payment>("payments.txt");
+            _paymentRepository = new PaymentRepository();
         }
 
-        public Payment CreatePayment(Order order, double amount, PaymentMethod method)
+        public Payment CreatePayment(Order order, decimal amount, PaymentMethod method)
         {
             if (order == null)
             {
@@ -28,29 +28,26 @@ namespace BuyMore.Managers.Implementations
             }
 
             var reference = Util.GenerateReference("PAY");
-            var payment = new Payment(reference, order.UserId, order.Id, order.UserEmail, amount, method)
-            {
-                Id = _nextId++
-            };
-            _payments.Add(payment);
-            FileUtil.SaveToFile(_payments, "payments.txt");
+            var payment = new Payment(reference, order.UserId, order.Id, order.UserEmail, amount, method);
+           
+            _paymentRepository.AddPayment(payment);
             Console.WriteLine($"Payment {reference} recorded for order {order.Reference} via {method}.");
             return payment;
         }
 
         public Payment? GetPaymentByReference(string reference)
         {
-            return _payments.FirstOrDefault(p => p.Reference.Equals(reference, StringComparison.InvariantCultureIgnoreCase));
+            return _paymentRepository.GetPaymentByReference(reference);
         }
 
         public IEnumerable<Payment> GetPaymentsByUser(int userId)
         {
-            return _payments.Where(p => p.UserId == userId).ToList();
+            return _paymentRepository.GetPaymentsByUser(userId);
         }
 
         public IEnumerable<Payment> GetAllPayments()
         {
-            return _payments.ToList();
+            return _paymentRepository.GetAllPayments();
         }
 
         public void UpdateStatus(string reference, PaymentStatus status)
@@ -62,8 +59,7 @@ namespace BuyMore.Managers.Implementations
                 return;
             }
 
-            payment.Status = status;
-            FileUtil.SaveToFile(_payments, "payments.txt");
+            _paymentRepository.UpdatePaymentStatus(reference, status);
             Console.WriteLine($"Payment {reference} is now {status}.");
         }
 

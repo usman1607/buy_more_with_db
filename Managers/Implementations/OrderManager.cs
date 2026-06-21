@@ -5,20 +5,20 @@ using BuyMore.Enums;
 using BuyMore.Helpers;
 using BuyMore.Managers.Interfaces;
 using BuyMore.Models;
+using BuyMore.Repositories.Implementations;
+using BuyMore.Repositories.Interfaces;
 
 namespace BuyMore.Managers.Implementations
 {
     public class OrderManager: IOrderManager
     {
-        private static int _nextId = 1;
-        private static List<Order> _orders = new List<Order>();
-
+        private readonly IOrderRepository _orderRepository;
         public OrderManager()
         {
-            _orders = FileUtil.ReadFromFile<Order>("orders.txt");
+            _orderRepository = new OrderRepository();
         }
 
-        public Order CreateOrder(User user, Cart cart, double totalAmount)
+        public Order CreateOrder(User user, Cart cart, decimal totalAmount)
         {
             if (cart == null)
             {
@@ -31,26 +31,25 @@ namespace BuyMore.Managers.Implementations
             }
 
             var reference = Util.GenerateReference("ORD");
-            var order = new Order(_nextId++, reference, user.Id, user.Email, cart.Id, totalAmount);
-            _orders.Add(order);
-            FileUtil.SaveToFile(_orders, "orders.txt");
+            var order = new Order(reference, user.Id, user.Email, cart.Id, totalAmount);
+            _orderRepository.AddOrder(order);
             Console.WriteLine($"Order {reference} created successfully.");
             return order;
         }
 
         public Order? GetOrderByReference(string reference)
         {
-            return _orders.FirstOrDefault(o => o.Reference.Equals(reference, StringComparison.InvariantCultureIgnoreCase));
+            return _orderRepository.GetOrderByReference(reference);
         }
 
         public IEnumerable<Order> GetOrdersByUser(int userId)
         {
-            return _orders.Where(o => o.UserId == userId).ToList();
+            return _orderRepository.GetOrdersByUser(userId);
         }
 
         public IEnumerable<Order> GetAllOrders()
         {
-            return _orders.ToList();
+            return _orderRepository.GetAllOrders();
         }
 
         public void UpdateStatus(string reference, OrderStatus status)
@@ -62,8 +61,7 @@ namespace BuyMore.Managers.Implementations
                 return;
             }
 
-            order.Status = status;
-            FileUtil.SaveToFile(_orders, "orders.txt");
+            _orderRepository.UpdateOrderStatus(reference, status);
             Console.WriteLine($"Order {reference} is now {status}.");
         }
 

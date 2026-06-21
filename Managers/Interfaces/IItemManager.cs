@@ -14,7 +14,7 @@ namespace BuyMore.Managers.Interfaces
         void GetItemByName(string name);//Should print items because more than one Item can have the same name
         void GetAll();
         Item GetItem(int id);
-        void Search(string? category = null, string? searchKey = null, double minPriceRange = 0, double maxPriceRange = 0);
+        void Search(string? category = null, string? searchKey = null, decimal minPriceRange = 0, decimal maxPriceRange = 0);
 
     }
 }

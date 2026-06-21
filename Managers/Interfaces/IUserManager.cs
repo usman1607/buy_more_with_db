@@ -12,7 +12,7 @@ namespace BuyMore.Managers.Interfaces
         void CreateAdmin(string loginUser);
         User Register();
         void UpdateUser(string loginUser);
-        void UpdateUserWallet(int id, double newBalance);
+        void UpdateUserWallet(int id, decimal newBalance);
         void GetUserByEmail(string email);
         void GetUserById(int id);
         void GetAll();

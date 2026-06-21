@@ -15,7 +15,7 @@ namespace BuyMore.Models
         public string EncryptedPassword { get; set; } = default!;
         public string? Address { get; set; }
         public Role Role { get; set; } = default!;
-        public double WalletBalance { get; private set; }
+        public decimal WalletBalance { get; private set; }
 
         public User(int id, string firstName, string lastName, string? phoneNumber, string email, string encryptedPassword, string? address, Role role, string createdBy, DateTime createdDate)
         {
@@ -49,7 +49,7 @@ namespace BuyMore.Models
             return $"ID: {Id}\tName: {FirstName} {LastName}\tPhoneNo: {PhoneNumber}\tEmail: {Email}\tAddress: {Address}\tUserType: {Role}\tWallet: {WalletBalance:C}";
         }
 
-        public void CreditWallet(double amount)
+        public void CreditWallet(decimal amount)
         {
             if (amount <= 0)
             {
@@ -59,7 +59,7 @@ namespace BuyMore.Models
             WalletBalance += amount;
         }
 
-        public bool TryDebitWallet(double amount)
+        public bool TryDebitWallet(decimal amount)
         {
             if (amount <= 0)
             {

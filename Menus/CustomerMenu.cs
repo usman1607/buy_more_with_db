@@ -100,8 +100,8 @@ namespace BuyMore.Menus
             var category = Console.ReadLine();
             Console.Write("Enter search keyword (press Enter to skip): ");
             var search = Console.ReadLine();
-            var minPrice = ReadDouble("Enter min price (0 for none): ");
-            var maxPrice = ReadDouble("Enter max price (0 for none): ");
+            var minPrice = ReadDecimal("Enter min price (0 for none): ");
+            var maxPrice = ReadDecimal("Enter max price (0 for none): ");
             _itemManager.Search(category, search, minPrice, maxPrice);
             PromptAddToCart(user);
         }
@@ -150,7 +150,7 @@ namespace BuyMore.Menus
 
         private void HandleFundWallet(User user)
         {
-            var amount = ReadDouble("Enter amount to add to your wallet: ");
+            var amount = ReadDecimal("Enter amount to add to your wallet: ");
             if (amount <= 0)
             {
                 Console.WriteLine("Amount must be greater than zero.");
@@ -261,7 +261,7 @@ namespace BuyMore.Menus
             return _cartManager.GetOrCreateCart(user.Id, user.Email);
         }
 
-        private bool TryCalculateTotal(Cart cart, out double total)
+        private bool TryCalculateTotal(Cart cart, out decimal total)
         {
             total = 0;
             foreach (var entry in cart.Items)
@@ -316,12 +316,12 @@ namespace BuyMore.Menus
             }
         }
 
-        private static bool HasSufficientWalletBalance(User user, double amount)
+        private static bool HasSufficientWalletBalance(User user, decimal amount)
         {
             return user.WalletBalance >= amount;
         }
 
-        private bool ProcessCardPayment(double amount)
+        private bool ProcessCardPayment(decimal amount)
         {
             Console.WriteLine("Processing card payment (mock)...");
             Console.Write("Enter mock card number (press Enter to skip): ");
@@ -362,12 +362,12 @@ namespace BuyMore.Menus
             return value;
         }
 
-        private static double ReadDouble(string prompt)
+        private static decimal ReadDecimal(string prompt)
         {
             Console.Write(prompt);
             var input = Console.ReadLine();
-            double value;
-            while (!double.TryParse(input, out value) || value < 0)
+            decimal value;
+            while (!decimal.TryParse(input, out value) || value < 0)
             {
                 Console.Write("Please enter a valid amount: ");
                 input = Console.ReadLine();

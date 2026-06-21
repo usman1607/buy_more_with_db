@@ -9,12 +9,12 @@ namespace BuyMore.Models
     {
         public string Name { get; set; } = default!;
         public string? Description { get; set; }
-        public double CostPrice { get; set; }
-        public double SellingPrice { get; set; }
+        public decimal CostPrice { get; set; }
+        public decimal SellingPrice { get; set; }
         public int Quantity { get; set; }
         public string Category { get; set; } = "General";
 
-        public Item(int id, string name, string description, double costPrice, double sellingPrice, int quantity, string category, string createdBy, DateTime createdDate)
+        public Item(int id, string name, string description, decimal costPrice, decimal sellingPrice, int quantity, string category, string createdBy, DateTime createdDate)
         {
             Id = id;
             Name = name;
@@ -27,7 +27,7 @@ namespace BuyMore.Models
             CreatedDate = createdDate;
         }
 
-        public Item(string name, string description, double costPrice, double sellingPrice, int quantity, string category, string createdBy)
+        public Item(string name, string description, decimal costPrice, decimal sellingPrice, int quantity, string category, string createdBy)
         {
             Name = name;
             Description = description;

@@ -12,12 +12,24 @@ namespace BuyMore.Models
         public int UserId { get; }
         public string UserEmail { get; } = default!;
         public int CartId { get; }
-        public double TotalAmount { get; }
+        public decimal TotalAmount { get; }
         public OrderStatus Status { get; set; }
 
-        public Order(int id, string reference, int userId, string userEmail, int cartId, double totalAmount)
+        public Order(int id, string reference, int userId, string userEmail, int cartId, decimal totalAmount, OrderStatus status, string createdBy, DateTime createdDate)
         {
             Id = id;
+            Reference = reference;
+            UserId = userId;
+            UserEmail = userEmail;
+            CartId = cartId;
+            TotalAmount = totalAmount;
+            Status = status;
+            CreatedBy = createdBy;
+            CreatedDate = createdDate;
+        }
+        
+        public Order(string reference, int userId, string userEmail, int cartId, decimal totalAmount)
+        {
             Reference = reference;
             UserId = userId;
             UserEmail = userEmail;
