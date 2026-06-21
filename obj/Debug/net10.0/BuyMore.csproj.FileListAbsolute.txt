@@ -1,0 +1,50 @@
+C:\Users\usman.tijani\OneDrive - Interswitch Limited\Desktop\Coh2\BuyMore\bin\Debug\net10.0\BuyMore.exe
+C:\Users\usman.tijani\OneDrive - Interswitch Limited\Desktop\Coh2\BuyMore\bin\Debug\net10.0\BuyMore.deps.json
+C:\Users\usman.tijani\OneDrive - Interswitch Limited\Desktop\Coh2\BuyMore\bin\Debug\net10.0\BuyMore.runtimeconfig.json
+C:\Users\usman.tijani\OneDrive - Interswitch Limited\Desktop\Coh2\BuyMore\bin\Debug\net10.0\BuyMore.dll
+C:\Users\usman.tijani\OneDrive - Interswitch Limited\Desktop\Coh2\BuyMore\bin\Debug\net10.0\BuyMore.pdb
+C:\Users\usman.tijani\OneDrive - Interswitch Limited\Desktop\Coh2\BuyMore\obj\Debug\net10.0\BuyMore.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\usman.tijani\OneDrive - Interswitch Limited\Desktop\Coh2\BuyMore\obj\Debug\net10.0\BuyMore.AssemblyInfoInputs.cache
+C:\Users\usman.tijani\OneDrive - Interswitch Limited\Desktop\Coh2\BuyMore\obj\Debug\net10.0\BuyMore.AssemblyInfo.cs
+C:\Users\usman.tijani\OneDrive - Interswitch Limited\Desktop\Coh2\BuyMore\obj\Debug\net10.0\BuyMore.csproj.CoreCompileInputs.cache
+C:\Users\usman.tijani\OneDrive - Interswitch Limited\Desktop\Coh2\BuyMore\obj\Debug\net10.0\BuyMore.sourcelink.json
+C:\Users\usman.tijani\OneDrive - Interswitch Limited\Desktop\Coh2\BuyMore\obj\Debug\net10.0\BuyMore.dll
+C:\Users\usman.tijani\OneDrive - Interswitch Limited\Desktop\Coh2\BuyMore\obj\Debug\net10.0\refint\BuyMore.dll
+C:\Users\usman.tijani\OneDrive - Interswitch Limited\Desktop\Coh2\BuyMore\obj\Debug\net10.0\BuyMore.pdb
+C:\Users\usman.tijani\OneDrive - Interswitch Limited\Desktop\Coh2\BuyMore\obj\Debug\net10.0\BuyMore.genruntimeconfig.cache
+C:\Users\usman.tijani\OneDrive - Interswitch Limited\Desktop\Coh2\BuyMore\obj\Debug\net10.0\ref\BuyMore.dll
+C:\Users\usman.tijani\Documents\Coh2\BuyMore\bin\Debug\net10.0\BuyMore.exe
+C:\Users\usman.tijani\Documents\Coh2\BuyMore\bin\Debug\net10.0\BuyMore.deps.json
+C:\Users\usman.tijani\Documents\Coh2\BuyMore\bin\Debug\net10.0\BuyMore.runtimeconfig.json
+C:\Users\usman.tijani\Documents\Coh2\BuyMore\bin\Debug\net10.0\BuyMore.dll
+C:\Users\usman.tijani\Documents\Coh2\BuyMore\bin\Debug\net10.0\BuyMore.pdb
+C:\Users\usman.tijani\Documents\Coh2\BuyMore\obj\Debug\net10.0\BuyMore.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\usman.tijani\Documents\Coh2\BuyMore\obj\Debug\net10.0\BuyMore.AssemblyInfoInputs.cache
+C:\Users\usman.tijani\Documents\Coh2\BuyMore\obj\Debug\net10.0\BuyMore.AssemblyInfo.cs
+C:\Users\usman.tijani\Documents\Coh2\BuyMore\obj\Debug\net10.0\BuyMore.csproj.CoreCompileInputs.cache
+C:\Users\usman.tijani\Documents\Coh2\BuyMore\obj\Debug\net10.0\BuyMore.sourcelink.json
+C:\Users\usman.tijani\Documents\Coh2\BuyMore\obj\Debug\net10.0\BuyMore.dll
+C:\Users\usman.tijani\Documents\Coh2\BuyMore\obj\Debug\net10.0\refint\BuyMore.dll
+C:\Users\usman.tijani\Documents\Coh2\BuyMore\obj\Debug\net10.0\BuyMore.pdb
+C:\Users\usman.tijani\Documents\Coh2\BuyMore\obj\Debug\net10.0\BuyMore.genruntimeconfig.cache
+C:\Users\usman.tijani\Documents\Coh2\BuyMore\obj\Debug\net10.0\ref\BuyMore.dll
+C:\Users\CodexSandboxOffline\.codex\.sandbox\cwd\b208ef71c954803e\bin\Debug\net10.0\BuyMore.exe
+C:\Users\CodexSandboxOffline\.codex\.sandbox\cwd\b208ef71c954803e\bin\Debug\net10.0\BuyMore.deps.json
+C:\Users\CodexSandboxOffline\.codex\.sandbox\cwd\b208ef71c954803e\bin\Debug\net10.0\BuyMore.runtimeconfig.json
+C:\Users\CodexSandboxOffline\.codex\.sandbox\cwd\b208ef71c954803e\bin\Debug\net10.0\BuyMore.dll
+C:\Users\CodexSandboxOffline\.codex\.sandbox\cwd\b208ef71c954803e\bin\Debug\net10.0\BuyMore.pdb
+C:\Users\CodexSandboxOffline\.codex\.sandbox\cwd\b208ef71c954803e\obj\Debug\net10.0\BuyMore.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\CodexSandboxOffline\.codex\.sandbox\cwd\b208ef71c954803e\obj\Debug\net10.0\BuyMore.AssemblyInfoInputs.cache
+C:\Users\CodexSandboxOffline\.codex\.sandbox\cwd\b208ef71c954803e\obj\Debug\net10.0\BuyMore.AssemblyInfo.cs
+C:\Users\CodexSandboxOffline\.codex\.sandbox\cwd\b208ef71c954803e\obj\Debug\net10.0\BuyMore.csproj.CoreCompileInputs.cache
+C:\Users\CodexSandboxOffline\.codex\.sandbox\cwd\b208ef71c954803e\obj\Debug\net10.0\BuyMore.sourcelink.json
+C:\Users\CodexSandboxOffline\.codex\.sandbox\cwd\b208ef71c954803e\obj\Debug\net10.0\BuyMore.dll
+C:\Users\CodexSandboxOffline\.codex\.sandbox\cwd\b208ef71c954803e\obj\Debug\net10.0\refint\BuyMore.dll
+C:\Users\CodexSandboxOffline\.codex\.sandbox\cwd\b208ef71c954803e\obj\Debug\net10.0\BuyMore.pdb
+C:\Users\CodexSandboxOffline\.codex\.sandbox\cwd\b208ef71c954803e\obj\Debug\net10.0\BuyMore.genruntimeconfig.cache
+C:\Users\CodexSandboxOffline\.codex\.sandbox\cwd\b208ef71c954803e\obj\Debug\net10.0\ref\BuyMore.dll
+C:\Users\usman.tijani\Documents\Coh2\BuyMore\bin\Debug\net10.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\usman.tijani\Documents\Coh2\BuyMore\bin\Debug\net10.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\usman.tijani\Documents\Coh2\BuyMore\bin\Debug\net10.0\Npgsql.dll
+C:\Users\usman.tijani\Documents\Coh2\BuyMore\obj\Debug\net10.0\BuyMore.csproj.AssemblyReference.cache
+C:\Users\usman.tijani\Documents\Coh2\BuyMore\obj\Debug\net10.0\BuyMore.csproj.Up2Date

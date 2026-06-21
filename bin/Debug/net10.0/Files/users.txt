@@ -1,0 +1,15 @@
+[
+  {
+    "FirstName": "Admin",
+    "LastName": "User",
+    "PhoneNumber": null,
+    "Email": "admin@buymore.com",
+    "EncryptedPassword": "fhWB\u002BnyNhDKs5JMfSlqHSIxkb3MlJA2ImB6wE9OUDNk=",
+    "Address": null,
+    "Role": 1,
+    "WalletBalance": 0,
+    "Id": 1,
+    "CreatedDate": "2026-06-14T17:04:04.3422086+01:00",
+    "CreatedBy": "System"
+  }
+]

@@ -1,0 +1,24 @@
+[
+  {
+    "Name": "Bag",
+    "Description": "Female bag",
+    "CostPrice": 20000,
+    "SellingPrice": 23000,
+    "Quantity": 20,
+    "Category": "Fashion",
+    "Id": 1,
+    "CreatedDate": "2026-06-14T17:13:05.4642289+01:00",
+    "CreatedBy": "admin@buymore.com"
+  },
+  {
+    "Name": "Shoe",
+    "Description": "Female shoe",
+    "CostPrice": 10000,
+    "SellingPrice": 14000,
+    "Quantity": 50,
+    "Category": "Fashion",
+    "Id": 2,
+    "CreatedDate": "2026-06-14T17:14:02.8434293+01:00",
+    "CreatedBy": "admin@buymore.com"
+  }
+]
