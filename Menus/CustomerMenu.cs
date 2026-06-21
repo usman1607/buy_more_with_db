@@ -136,8 +136,15 @@ namespace BuyMore.Menus
             var itemId = ReadInt("Enter item Id to remove: ");
             Console.Write("Enter quantity to remove (0 removes all): ");
             var input = Console.ReadLine();
-            int quantity = 0;
-            int.TryParse(input, out quantity);
+            int quantity;
+            do
+            {
+                if (!int.TryParse(input, out quantity) || quantity < 0)
+                {
+                    Console.Write("Please enter a valid non-negative number: ");
+                    input = Console.ReadLine();
+                }
+            } while (quantity < 0);
             _cartManager.RemoveItem(cart.Id, itemId, quantity);
         }
 

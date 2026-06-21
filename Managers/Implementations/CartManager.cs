@@ -4,25 +4,25 @@ using System.Linq;
 using BuyMore.Helpers;
 using BuyMore.Managers.Interfaces;
 using BuyMore.Models;
+using BuyMore.Repositories.Implementations;
+using BuyMore.Repositories.Interfaces;
 
 namespace BuyMore.Managers.Implementations
 {
     public class CartManager: ICartManager
     {
-        private static int _nextId = 1;
-        private static List<Cart> _carts = new List<Cart>();
+        private readonly ICartRepository _cartRepository;
 
         public CartManager()
         {
-            _carts = FileUtil.ReadFromFile<Cart>("carts.txt");
+            _cartRepository = new CartRepository();
         }
 
         public Cart CreateCart(int userId, string userEmail)
         {
-            var cart = new Cart(_nextId++, userId, userEmail);
-            _carts.Add(cart);
-            FileUtil.SaveToFile(_carts, "carts.txt");
-            Console.WriteLine($"Cart {cart.Id} created for {userEmail}.");
+            var cart = new Cart(userId, userEmail);
+            _cartRepository.AddCart(cart);
+            Console.WriteLine($"Cart Id: {cart.Id} created for {userEmail}.");
             return cart;
         }
 
@@ -34,12 +34,12 @@ namespace BuyMore.Managers.Implementations
 
         public Cart? GetCart(int cartId)
         {
-            return _carts.FirstOrDefault(c => c.Id == cartId);
+            return _cartRepository.GetCart(cartId);
         }
 
         public Cart? GetCartByUser(int userId)
         {
-            return _carts.FirstOrDefault(c => c.UserId == userId);
+            return _cartRepository.GetCartByUserId(userId);
         }
 
         public void AddItem(int cartId, Item item, int quantity)
@@ -70,7 +70,7 @@ namespace BuyMore.Managers.Implementations
             }
 
             cart.AddItem(item.Id, quantity);
-            FileUtil.SaveToFile(_carts, "carts.txt");
+            _cartRepository.UpdateCart(cart.UserId, cart);
             Console.WriteLine($"Added {quantity} x {item.Name} to cart {cart.Id}.");
         }
 
@@ -95,7 +95,7 @@ namespace BuyMore.Managers.Implementations
             }
 
             cart.RemoveItem(itemId, quantity);
-            FileUtil.SaveToFile(_carts, "carts.txt");   
+            _cartRepository.UpdateCart(cart.UserId, cart);
             Console.WriteLine("Item updated in cart.");
         }
 
@@ -109,7 +109,7 @@ namespace BuyMore.Managers.Implementations
             }
 
             cart.Clear();
-            FileUtil.SaveToFile(_carts, "carts.txt");
+            _cartRepository.UpdateCart(cart.UserId, cart);
             Console.WriteLine("Cart cleared.");
         }
 

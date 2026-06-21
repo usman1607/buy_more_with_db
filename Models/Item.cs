@@ -14,9 +14,21 @@ namespace BuyMore.Models
         public int Quantity { get; set; }
         public string Category { get; set; } = "General";
 
-        public Item(int id, string name, string description, double costPrice, double sellingPrice, int quantity, string category, string createdBy)
+        public Item(int id, string name, string description, double costPrice, double sellingPrice, int quantity, string category, string createdBy, DateTime createdDate)
         {
             Id = id;
+            Name = name;
+            Description = description;
+            CostPrice = costPrice;
+            SellingPrice = sellingPrice;
+            Quantity = quantity;
+            Category = category;
+            CreatedBy = createdBy;
+            CreatedDate = createdDate;
+        }
+
+        public Item(string name, string description, double costPrice, double sellingPrice, int quantity, string category, string createdBy)
+        {
             Name = name;
             Description = description;
             CostPrice = costPrice;

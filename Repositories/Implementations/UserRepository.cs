@@ -133,14 +133,25 @@ namespace BuyMore.Repositories.Implementations
             var sql = "UPDATE users SET first_name = @firstName, last_name = @lastName, phone_number = @phoneNumber, encrypted_password = @encryptedPassword, address = @address, role = @role, wallet_balance = @walletBalance WHERE id = @id";
             using var cmd = new NpgsqlCommand(sql, connection);
             
-            cmd.Parameters.AddWithValue("firstName", user.FirstName);
+            Database.AddParameter(cmd, new Dictionary<string, object>
+            {
+                { "firstName", user.FirstName },
+                { "lastName", user.LastName },
+                { "phoneNumber", user.PhoneNumber ?? (object)DBNull.Value },
+                { "encryptedPassword", user.EncryptedPassword },
+                { "address", user.Address ?? (object)DBNull.Value },
+                { "role", user.Role.ToString() },
+                { "walletBalance", user.WalletBalance },
+                { "id", id }
+            });
+            /*cmd.Parameters.AddWithValue("firstName", user.FirstName);
             cmd.Parameters.AddWithValue("lastName", user.LastName);
             cmd.Parameters.AddWithValue("phoneNumber", user.PhoneNumber ?? (object)DBNull.Value);
             cmd.Parameters.AddWithValue("encryptedPassword", user.EncryptedPassword);
             cmd.Parameters.AddWithValue("address", user.Address ?? (object)DBNull.Value);
             cmd.Parameters.AddWithValue("role", user.Role.ToString());
             cmd.Parameters.AddWithValue("walletBalance", user.WalletBalance);
-            cmd.Parameters.AddWithValue("id", id);
+            cmd.Parameters.AddWithValue("id", id);*/
 
             var rowsAffected = cmd.ExecuteNonQuery();
             return rowsAffected > 0;

@@ -12,5 +12,15 @@ namespace BuyMore.Repositories
             connection.Open();
             return connection;
         }
+
+        public static void AddParameter(this NpgsqlCommand command, Dictionary<string, object> dict)
+        {
+            foreach (var kvp in dict)
+            {
+                command.Parameters.AddWithValue(kvp.Key, kvp.Value);
+            }
+        }
     }
+
+    
 }

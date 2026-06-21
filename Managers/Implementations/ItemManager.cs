@@ -5,17 +5,17 @@ using System.Threading.Tasks;
 using BuyMore.Helpers;
 using BuyMore.Managers.Interfaces;
 using BuyMore.Models;
+using BuyMore.Repositories.Implementations;
+using BuyMore.Repositories.Interfaces;
 
 namespace BuyMore.Managers.Implementations
 {
     public class ItemManager: IItemManager
     {
-        private static int _nextId = 1;
-        private static List<Item> _allItems = new List<Item>();
-
+        private readonly IItemRepository _itemRepository;
         public ItemManager()
         {
-            _allItems = FileUtil.ReadFromFile<Item>("items.txt");
+            _itemRepository = new ItemRepository();
         }
 
         public void CreateItem(string loginUser)
@@ -27,17 +27,15 @@ namespace BuyMore.Managers.Implementations
             var quantity = ReadInt("Enter quantity: ", minValue: 0);
             var category = ReadRequiredString("Enter category: ");
 
-            var id = _nextId++;
-            var item = new Item(id, name, description, costPrice, sellingPrice, quantity, category, loginUser);
-            _allItems.Add(item);
-            FileUtil.SaveToFile(_allItems, "items.txt");
+            var item = new Item(name, description, costPrice, sellingPrice, quantity, category, loginUser);
+            _itemRepository.AddItem(item);
             Console.WriteLine("Item created successfully...");
-            Console.WriteLine($"Id: {id}    Name: {name}    Category: {category}");
+            Console.WriteLine($"Id: {item.Id}    Name: {item.Name}    Category: {item.Category}");
         }
 
         public void UpdateItem(string loginUser, int id)
         {
-            var item = _allItems.FirstOrDefault(i => i.Id == id);
+            var item = _itemRepository.GetItemById(id);
             if (item == null)
             {
                 Console.WriteLine($"Item with Id: {id} not found.");
@@ -61,13 +59,13 @@ namespace BuyMore.Managers.Implementations
             item.Category = category;
             item.CreatedBy = loginUser;
 
-            FileUtil.SaveToFile(_allItems, "items.txt");
+            _itemRepository.UpdateItem(id, item);
             Console.WriteLine("Item updated successfully.");
         }
 
         public void GetItemById(int id)
         {
-            var item = _allItems.FirstOrDefault(i => i.Id == id);
+            var item = _itemRepository.GetItemById(id);
             if (item == null)
             {
                 Console.WriteLine($"Item with Id: {id} not found.");
@@ -84,7 +82,7 @@ namespace BuyMore.Managers.Implementations
                 return;
             }
 
-            var matchingItems = _allItems
+            var matchingItems = _itemRepository.GetAllItems()
                 .Where(i => i.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase))
                 .ToList();
 
@@ -102,13 +100,14 @@ namespace BuyMore.Managers.Implementations
 
         public void GetAll()
         {
-            if (_allItems.Count == 0)
+            var items = _itemRepository.GetAllItems();
+            if (items.Count == 0)
             {
                 Console.WriteLine("No item found.");
                 return;
             }
 
-            foreach (var item in _allItems)
+            foreach (var item in items)
             {
                 Console.WriteLine(item.ToString());
             }
@@ -116,7 +115,7 @@ namespace BuyMore.Managers.Implementations
 
         public Item GetItem(int id)
         {
-            var item = _allItems.FirstOrDefault(i => i.Id == id);
+            var item = _itemRepository.GetItemById(id);
             if (item == null)
             {
                 throw new KeyNotFoundException($"Item with Id: {id} not found.");
@@ -127,7 +126,8 @@ namespace BuyMore.Managers.Implementations
 
         public void Search(string? category = null, string? searchKey = null, double minPriceRange = 0, double maxPriceRange = 0)
         {
-            if (_allItems.Count == 0)
+            var items = _itemRepository.GetAllItems();
+            if (items.Count == 0)
             {
                 Console.WriteLine("No item found.");
                 return;
@@ -144,7 +144,7 @@ namespace BuyMore.Managers.Implementations
                 (minPriceRange, maxPriceRange) = (maxPriceRange, minPriceRange);
             }
 
-            var results = _allItems.AsEnumerable();
+            var results = _itemRepository.GetAllItems().AsEnumerable();
 
             if (!string.IsNullOrWhiteSpace(category))
             {
